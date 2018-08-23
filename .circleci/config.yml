@@ -2,7 +2,7 @@ version: 2
 jobs:
     build:
       docker:
-        - image: circleci/node:8.9
+        - image: circleci/node:8.11.3
       steps:
         - checkout
         - run: echo "npm installing"
@@ -18,7 +18,7 @@ jobs:
         - run: npm run test
     hithere:
       docker:
-        - image: circleci/node:8.9
+        - image: circleci/node:8.11.3
       steps:
         - checkout
         - run: echo "hiiii"

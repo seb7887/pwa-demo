@@ -1,20 +1,33 @@
 version: 2
 jobs:
-    pepe:
+    build:
       docker:
-        - image: circleci/ruby:2.4.1
+        - image: circleci/node:8.9
       steps:
         - checkout
-        - run: echo "hello"
-    lepu:
+        - run: echo "npm installing"
+        - run: npm install
+        - run: CI=true npm run build
+    test:
       docker:
-        -image: circleci/ruby:2.4.1
+        - image: circleci/node:8.9
       steps:
         - checkout
-        - run: echo "world"
+        - run: echo "Testing"
+        - run: npm install
+        - run: npm run test
+    hithere:
+      docker:
+        - image: circleci/node:8.9
+      steps:
+        - checkout
+        - run: echo "hiiii"
 workflows:
     version: 2
-    pepe_lepu:
+    build_test_and_lint:
         jobs:
-          - pepe
-          - lepu
+          - build
+          - hithere
+          - test:
+              requires:
+                - hithere

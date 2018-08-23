@@ -1,0 +1,20 @@
+version: 2
+jobs:
+    pepe:
+      docker:
+        - image: circleci/ruby:2.4.1
+      steps:
+        - checkout
+        - run: echo "hello"
+    lepu:
+      docker:
+        -image: circleci/ruby:2.4.1
+      steps:
+        - checkout
+        - run: echo "world"
+    workflows:
+        version: 2
+        pepe_lepu:
+            jobs:
+              - pepe
+              - lepu

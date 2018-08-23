@@ -12,9 +12,9 @@ jobs:
       steps:
         - checkout
         - run: echo "world"
-    workflows:
-        version: 2
-        pepe_lepu:
-            jobs:
-              - pepe
-              - lepu
+workflows:
+    version: 2
+    pepe_lepu:
+        jobs:
+          - pepe
+          - lepu
